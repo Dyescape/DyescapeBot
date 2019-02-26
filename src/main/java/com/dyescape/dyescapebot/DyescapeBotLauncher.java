@@ -55,6 +55,7 @@ public class DyescapeBotLauncher extends Launcher {
         System.out.println("       |___/                    |_|");
         System.out.println("  :: Discord Bot ::            " +
                 DyescapeBotLauncher.class.getPackage().getSpecificationVersion());
+        System.out.println("hi im ph- dyescape bot");
         System.out.println();
 
         System.setProperty(
