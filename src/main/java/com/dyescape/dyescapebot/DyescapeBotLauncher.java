@@ -47,12 +47,14 @@ public class DyescapeBotLauncher extends Launcher {
 
     public static void main(String[] args) {
         System.out.println();
-        System.out.println(" ____");
-        System.out.println("|  _ \\ _   _  ___  ___  ___ __ _ _ __   ___ ");
-        System.out.println("| | | | | | |/ _ \\/ __|/ __/ _` | '_ \\ / _ \\");
-        System.out.println("| |_| | |_| |  __/\\__ \\ (_| (_| | |_) |  __/");
-        System.out.println("|____/ \\__, |\\___||___/\\___\\__,_| .__/ \\___|");
-        System.out.println("       |___/                    |_|");
+        System.out.println("_____       _              _____                      ");
+       System.out.println("|  __ \     | |            / ____|                     ");
+       System.out.println("| |  | | ___| | __ _ _   _| (___   ___ __ _ _ __   ___ ");
+       System.out.println("| |  | |/ _ \ |/ _` | | | |\___ \ / __/ _` | '_ \ / _ \\");
+       System.out.println("| |__| |  __/ | (_| | |_| |____) | (_| (_| | |_) |  __/");
+       System.out.println("|_____/ \___|_|\__,_|\__, |_____/ \___\__,_| .__/ \___|");
+        System.out.println("                     __/ |                | |         ");
+        System.out.println("                    |___/                 |_|         ");        
         System.out.println("  :: Discord Bot ::            " +
                 DyescapeBotLauncher.class.getPackage().getSpecificationVersion());
         System.out.println();
