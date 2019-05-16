@@ -317,10 +317,12 @@ public class DiscordModeration implements Moderation {
 
     private void sendPrivateMessage(long userId, String message) {
 
-        // TODO: Check if the user has PMs disabled
-        this.jda.getUserById(userId).openPrivateChannel().queue((channel) -> {
-            channel.sendMessage(message).queue();
-        });
+        try {
+            // TODO: Check if the user has PMs disabled
+            this.jda.getUserById(userId).openPrivateChannel().queue((channel) -> {
+                channel.sendMessage(message).queue();
+            });
+        } catch (Exception ignored) { }
     }
 
     private String getUsername(Long userId) {
