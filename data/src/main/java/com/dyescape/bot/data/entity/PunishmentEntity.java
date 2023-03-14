@@ -1,6 +1,6 @@
 package com.dyescape.bot.data.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.util.Objects;

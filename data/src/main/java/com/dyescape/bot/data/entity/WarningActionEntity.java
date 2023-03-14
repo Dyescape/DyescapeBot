@@ -2,7 +2,7 @@ package com.dyescape.bot.data.entity;
 
 import com.dyescape.bot.data.id.ServerPointsTypeID;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
