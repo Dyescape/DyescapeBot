@@ -9,7 +9,7 @@ import co.aikar.commands.InvalidCommandArgument;
 import co.aikar.commands.JDACommandExecutionContext;
 import co.aikar.commands.contexts.ContextResolver;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 public class TextChannelResolver implements ContextResolver<TextChannel, JDACommandExecutionContext> {
 

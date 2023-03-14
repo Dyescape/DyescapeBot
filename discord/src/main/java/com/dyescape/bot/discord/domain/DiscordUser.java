@@ -2,16 +2,16 @@ package com.dyescape.bot.discord.domain;
 
 import com.dyescape.bot.data.entity.*;
 import com.dyescape.bot.data.suit.DataSuit;
-import com.dyescape.bot.discord.cron.PunishmentExpiryCheck;
 import com.dyescape.bot.discord.util.DiscordMessage;
 import com.dyescape.bot.domain.model.Punishment;
 import com.dyescape.bot.domain.model.Server;
 import com.dyescape.bot.domain.model.TimeFrame;
 import com.dyescape.bot.domain.model.User;
 import com.dyescape.bot.domain.model.impl.UserAbstract;
-
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -22,6 +22,7 @@ import java.time.Instant;
 import java.time.Period;
 import java.util.List;
 import java.util.Spliterator;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -153,7 +154,7 @@ public class DiscordUser extends UserAbstract {
         }
         this.trySendPrivateMessage(messageBody);
 
-        guild.kick(this.jdaUser.getId(), reason).queue();
+        guild.kick(this.jdaUser).reason(reason).queue();
     }
 
     @Override
@@ -165,7 +166,7 @@ public class DiscordUser extends UserAbstract {
         if (guild == null) return;
         List<Role> mutedRoles = guild.getRolesByName("muted", true);
         if (!mutedRoles.isEmpty()) {
-            guild.removeRoleFromMember(this.jdaUser.getId(), mutedRoles.get(0)).queue();
+            guild.removeRoleFromMember(this.jdaUser, mutedRoles.get(0)).queue();
         }
 
         PunishmentEntity lastMute = this.dataSuit.getPunishmentRepository()
@@ -279,7 +280,7 @@ public class DiscordUser extends UserAbstract {
         Guild guild = this.jdaUser.getJDA().getGuildById(server.getId());
         if (guild == null) return;
 
-        guild.ban(this.jdaUser, 0, reason).queue();
+        guild.ban(this.jdaUser, 0, TimeUnit.DAYS).reason(reason).queue();
 
         PunishmentEntity lastBan = this.dataSuit.getPunishmentRepository()
                 .findTopByUserIdAndServerIdAndActionOrderByGivenAtDesc(this.getId(),
@@ -362,8 +363,12 @@ public class DiscordUser extends UserAbstract {
                 .queue();
 
         for (TextChannel textChannel : guild.getTextChannels()) {
-            textChannel.createPermissionOverride(role)
-                    .deny(Permission.MESSAGE_ADD_REACTION, Permission.MESSAGE_WRITE)
+            textChannel.upsertPermissionOverride(role)
+                    .deny(
+                            Permission.MESSAGE_ADD_REACTION,
+                            Permission.MESSAGE_SEND_IN_THREADS,
+                            Permission.MESSAGE_SEND_IN_THREADS
+                    )
                     .queue();
         }
 
@@ -375,7 +380,7 @@ public class DiscordUser extends UserAbstract {
             PrivateChannel privateChannel = this.jdaUser.openPrivateChannel().complete();
             if (privateChannel != null) {
                 MessageEmbed message = DiscordMessage.CreateEmbeddedMessage(null, messageText, this.jdaUser);
-                privateChannel.sendMessage(message).complete();
+                privateChannel.sendMessageEmbeds(message).complete();
             }
         } catch (Exception ignored) { }
     }

@@ -40,7 +40,7 @@ public class InfoCommand extends BotCommand {
         builder.setAuthor(this.getDiscordUserName(targetJdaUser), null, targetJdaUser.getAvatarUrl());
         builder.setDescription(this.getUserInfoAsString(this.getServerFromJDA(e.getIssuer().getGuild()), (DiscordUser) targetUser));
 
-        e.getIssuer().getChannel().sendMessage(builder.build()).queue();
+        e.getIssuer().getChannel().sendMessageEmbeds(builder.build()).queue();
     }
 
     private String getUserInfoAsString(Server server, DiscordUser discordUser) {

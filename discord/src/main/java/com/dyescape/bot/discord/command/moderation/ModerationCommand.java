@@ -13,7 +13,7 @@ import com.dyescape.bot.domain.model.User;
 import co.aikar.commands.JDACommandEvent;
 import co.aikar.commands.annotation.*;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.Pattern;

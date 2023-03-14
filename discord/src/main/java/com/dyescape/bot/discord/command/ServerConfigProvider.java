@@ -2,7 +2,7 @@ package com.dyescape.bot.discord.command;
 
 import co.aikar.commands.CommandConfig;
 import co.aikar.commands.CommandConfigProvider;
-import net.dv8tion.jda.api.entities.ChannelType;
+import net.dv8tion.jda.api.entities.channel.ChannelType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;

@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class UserProcessor implements ArgumentProcessor<User> {
 
     private static final Pattern USER_ID = Pattern.compile("[<@!]*?\\d+[>]?");
-    private static final Pattern USER_DISCRIMINATOR = Pattern.compile("([\\w]+)#(\\d{4})");
+    private static final Pattern USER_DISCRIMINATOR = Pattern.compile("(\\w+)#(\\d{4})");
 
     private final JDA jda;
 
@@ -32,7 +32,7 @@ public class UserProcessor implements ArgumentProcessor<User> {
 
             User result = this.jda.getUserById(argument);
             if (result == null) {
-                result = this.jda.retrieveUserById(argument, false).complete();
+                result = this.jda.retrieveUserById(argument).complete();
             }
 
             return result;

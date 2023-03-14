@@ -10,7 +10,7 @@ import com.dyescape.bot.domain.model.TimeFrame;
 import co.aikar.commands.JDACommandEvent;
 import co.aikar.commands.annotation.*;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import org.jetbrains.annotations.Nullable;
 
 @CommandAlias("configuration")
