@@ -35,7 +35,7 @@ public class DiscordJDABootstrap {
                 GatewayIntent.GUILD_MEMBERS,
                 GatewayIntent.DIRECT_MESSAGES,
                 GatewayIntent.GUILD_MESSAGES,
-                GatewayIntent.GUILD_EMOJIS
+                GatewayIntent.GUILD_EMOJIS_AND_STICKERS
         );
 
         builder.addEventListeners(

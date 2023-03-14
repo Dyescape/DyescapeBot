@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:17
 
 ARG JAR_FILE=target/*.jar
 EXPOSE 8080

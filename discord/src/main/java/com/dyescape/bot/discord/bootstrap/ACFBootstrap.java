@@ -15,7 +15,7 @@ import com.dyescape.bot.domain.model.User;
 import co.aikar.commands.JDACommandContexts;
 import co.aikar.commands.JDACommandManager;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

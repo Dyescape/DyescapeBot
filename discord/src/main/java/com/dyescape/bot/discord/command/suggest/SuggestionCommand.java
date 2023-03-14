@@ -10,7 +10,7 @@ import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.Syntax;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 import java.util.List;
 
@@ -39,9 +39,9 @@ public class SuggestionCommand extends BotCommand {
             channels.get(0).sendMessage(message).queue(success -> {
 
                 // TODO: Configurable
-                success.addReaction(guild.getEmotesByName("agree", true).get(0)).queue();
-                success.addReaction(guild.getEmotesByName("neutral", true).get(0)).queue();
-                success.addReaction(guild.getEmotesByName("disagree", true).get(0)).queue();
+                success.addReaction(guild.getEmojisByName("agree", true).get(0)).queue();
+                success.addReaction(guild.getEmojisByName("neutral", true).get(0)).queue();
+                success.addReaction(guild.getEmojisByName("disagree", true).get(0)).queue();
             });
         } catch (Exception ex) {
             this.error(e.getIssuer().getChannel(), ex);

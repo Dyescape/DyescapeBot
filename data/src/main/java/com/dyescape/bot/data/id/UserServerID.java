@@ -1,7 +1,7 @@
 package com.dyescape.bot.data.id;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 
 import java.io.Serializable;
 import java.util.Objects;

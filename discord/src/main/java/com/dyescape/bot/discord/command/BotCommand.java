@@ -12,8 +12,8 @@ import com.dyescape.bot.domain.model.User;
 import co.aikar.commands.BaseCommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 
 public abstract class BotCommand extends BaseCommand {
 
@@ -73,7 +73,7 @@ public abstract class BotCommand extends BaseCommand {
             jdaUser = this.getJda().getUserById(user.getId());
         }
         MessageEmbed embed = DiscordMessage.CreateEmbeddedMessage(null, body, jdaUser);
-        channel.sendMessage(embed).queue();
+        channel.sendMessageEmbeds(embed).queue();
     }
 
     /**
@@ -83,6 +83,6 @@ public abstract class BotCommand extends BaseCommand {
      */
     protected void error(MessageChannel channel, Exception e) {
         MessageEmbed embed = DiscordMessage.CreateEmbeddedMessage("**An error occurred**", e.getMessage(), null);
-        channel.sendMessage(embed).queue();
+        channel.sendMessageEmbeds(embed).queue();
     }
 }

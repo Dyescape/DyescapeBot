@@ -1,7 +1,7 @@
 package com.dyescape.bot.discord.command.resolver.processor;
 
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
